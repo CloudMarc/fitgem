@@ -1,6 +1,5 @@
 require 'fitgem'
 require 'omniauth-fitbit'
-require "fitgem"
 require "pp"
 require "yaml"
  
@@ -53,15 +52,11 @@ end
 # ============================================================
 # Add Fitgem API calls on the client object below this line
 
-#dt = Time.now - 2.days
-#dt = Time.now.ago(2.days)
-#dt = Date.today 
 dt = Date.today - 1
 nsteps = 0
 i = 0 
 while dt > Date.today - 31
   x = client.activities_on_date  dt
-#x = client.data_by_time_range("/body/weight", {:base_date => "2011-03-03", :end_date => "2011-07-27"})
   steps = x['summary']['steps'].to_i
   i = i + 1
   puts steps.inspect + " " + dt.inspect + " " + i.inspect
